@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/bigwig digital logo (11).png";
+import Image from "next/image";
 
 const Nav2: React.FC = () => {
   const handleScroll = (sectionId: string) => {
@@ -19,7 +20,7 @@ const Nav2: React.FC = () => {
         <div className="font-bold text-3xl cursor-pointer ">
           <button onClick={() => handleScroll("top")}>
             <a href="/">
-              <img src={logo} alt="" className="w-48" />
+              <Image src={logo} alt="" className="w-48" />
             </a>
           </button>
         </div>

@@ -1,3 +1,4 @@
+"use client";
 import { useState, useRef } from "react";
 import {
   FaUsers,
@@ -247,7 +248,9 @@ const FlipCard = () => {
         {cards.map((card, index) => (
           <div
             key={card.id}
-            ref={(el) => (sectionsRef.current[card.id] = el)}
+            ref={(el) => {
+              sectionsRef.current[card.id] = el;
+            }}
             id={card.id}
             data-aos="zoom-in"
             className="group w-full md:w-96 h-[300px] perspective mx-auto"

@@ -4,6 +4,7 @@ import step1 from "../assets/our process/Let's Talk.png";
 import step2 from "../assets/our process/Game Plan.png";
 import step3 from "../assets/our process/Go Live.png";
 import step4 from "../assets/our process/Refine and Scale.png";
+import Image from "next/image";
 
 const steps = [
   {
@@ -86,7 +87,7 @@ const OurProcess: React.FC = () => {
                   }
                 `}
               >
-                <img
+                <Image
                   src={step.img}
                   alt={step.title}
                   className={`w-24 h-24 object-contain mb-3 ${

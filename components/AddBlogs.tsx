@@ -1,7 +1,8 @@
+"use client";
 import { useEffect, useState } from "react";
-import ReactQuill from "react-quill";
+import ReactQuill from "react-quill-new";
 import "react-quill/dist/quill.snow.css";
-const baseURL = import.meta.env.VITE_API_BASE_URL;
+const baseURL = process.env.VITE_API_BASE_URL;
 
 // const API_BASE = "https://bigwigdigitalbackend.onrender.com";
 
@@ -325,8 +326,8 @@ const AddBlog = ({
                   ? "Updating..."
                   : "Adding..."
                 : existingBlog
-                  ? "Update"
-                  : "Submit"}
+                ? "Update"
+                : "Submit"}
             </button>
           </div>
         </form>

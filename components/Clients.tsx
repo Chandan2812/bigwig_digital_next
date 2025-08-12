@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 import "../pages/Clients.css";
 import AOS from "aos";

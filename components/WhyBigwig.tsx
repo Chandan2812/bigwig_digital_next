@@ -12,6 +12,7 @@ import expertise from "../assets/Why BigWig  (1)/360° Digital Expertise (1).png
 import partnership from "../assets/Why BigWig  (1)/Partnership Over Projects.png";
 import ideas from "../assets/Why BigWig  (1)/Driven by Ideas.png";
 import reporting from "../assets/Why BigWig  (1)/Clear & Honest Reporting.png";
+import Image from "next/image";
 
 const reasons = [
   {
@@ -87,7 +88,7 @@ const WhyBigwig: React.FC = () => (
           key={title}
           className="group bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-2xl p-8 text-center shadow transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
         >
-          <img
+          <Image
             src={img}
             alt={title}
             className="mx-auto mb-6 w-28 h-28 object-contain group-hover:scale-105 transition-transform duration-300"
@@ -108,7 +109,7 @@ const WhyBigwig: React.FC = () => (
         {reasons.map(({ img, title, text }) => (
           <div key={title} className="px-2">
             <div className="group bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-2xl p-8 text-center shadow transition-all duration-300">
-              <img
+              <Image
                 src={img}
                 alt={title}
                 className="mx-auto mb-6 w-24 h-24 object-contain"

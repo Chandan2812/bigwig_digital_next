@@ -7,6 +7,7 @@ import award5 from "../assets/partner/wordpress.jpg";
 import award6 from "../assets/partner/tiktok-partners (1).png";
 import award7 from "../assets/partner/Shopify_Partner.png";
 import award8 from "../assets/partner/microsoft.png";
+import Image from "next/image";
 // Add more awards as needed
 
 const awards = [
@@ -59,7 +60,7 @@ const Partners: React.FC = () => {
         {/* Right: Awards as images */}
         <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-8">
           {awards.map((award, index) => (
-            <img
+            <Image
               key={index}
               src={award.image}
               alt={award.title}

@@ -9,11 +9,12 @@ import {
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import logo from "../assets/bigwig digital logo (11).png";
 import line2 from "../assets/line2.png";
+import Image from "next/image";
 
 function Footer2() {
   return (
     <div className="relative">
-      <img
+      <Image
         src={line2}
         alt=""
         className="absolute top-0 left-0 invert"
@@ -26,7 +27,7 @@ function Footer2() {
             {/* Branding - 1/3 */}
             <div className="md:w-1/3">
               <div className="py-2 md:px-2 md:py-1 flex justify-center md:justify-start mb-4">
-                <img
+                <Image
                   src={logo}
                   alt="Bigwig Logo"
                   className="w-60"

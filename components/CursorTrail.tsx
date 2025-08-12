@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState, createRef } from "react";
 import gsap from "gsap";
 import "../pages/CursorTrail.css";
@@ -7,8 +8,9 @@ const TRAIL_LENGTH = 10;
 const CustomCursor = () => {
   const [isMoving, setIsMoving] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const trailRefs = useRef<Array<React.RefObject<HTMLDivElement>>>([]);
+
+  const cursorRef = useRef<HTMLDivElement | null>(null);
+  const trailRefs = useRef<React.RefObject<HTMLDivElement | null>[]>([]); // ✅ fixed type
   const mousePosition = useRef({ x: -100, y: -100 });
   const movementTimeout = useRef<NodeJS.Timeout | null>(null);
   const animationFrameId = useRef<number | null>(null);
@@ -23,13 +25,14 @@ const CustomCursor = () => {
     "rgba(255, 0, 0, 0.6)", // Red
   ];
 
+  // Initialize trail refs only once
   useEffect(() => {
-    // Initialize trail segments
     trailRefs.current = Array.from({ length: TRAIL_LENGTH }, () =>
       createRef<HTMLDivElement>()
     );
   }, []);
 
+  // Handle mouse movement
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX: x, clientY: y } = e;
@@ -58,6 +61,7 @@ const CustomCursor = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  // Handle mouse down
   const handleMouseDown = () => {
     setIsMouseDown(true);
     if (cursorRef.current) {
@@ -72,6 +76,7 @@ const CustomCursor = () => {
     }
   };
 
+  // Handle mouse up
   const handleMouseUp = () => {
     setIsMouseDown(false);
     if (cursorRef.current) {
@@ -86,6 +91,7 @@ const CustomCursor = () => {
     }
   };
 
+  // Animate trail segments
   useEffect(() => {
     const updateTrail = () => {
       trailRefs.current.forEach((ref, index) => {
@@ -123,6 +129,7 @@ const CustomCursor = () => {
     };
   }, [isMoving, isMouseDown]);
 
+  // Mouse down/up events
   useEffect(() => {
     window.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);

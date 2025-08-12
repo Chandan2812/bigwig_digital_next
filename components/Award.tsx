@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import award1 from "../assets/partner/award1.png";
 import award2 from "../assets/partner/best-seo-award.png";
 import award3 from "../assets/partner/google-premier-partner-awards_0-1.jpg";
+import Image from "next/image";
 
 // Add more awards as needed
 
@@ -34,7 +36,7 @@ const AwardSection: React.FC = () => {
         {/* Right: Awards as images */}
         <div className="flex flex-wrap justify-center md:justify-start items-center gap-2 md:gap-8">
           {awards.map((award, index) => (
-            <img
+            <Image
               key={index}
               src={award.image}
               alt={award.title}

@@ -1,7 +1,9 @@
+"use client";
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import faq_img from "../assets/faq-img.png";
 import { useLocation } from "react-router-dom";
+import Image from "next/image";
 
 type Faq = {
   question: string;
@@ -82,7 +84,7 @@ const ToggleFAQ = () => {
       </h2>
       <div className="flex flex-col md:flex-row justify-evenly  py-3 items-start ">
         <div className="md:flex items-start hidden  ">
-          <img
+          <Image
             src={faq_img}
             alt="FAQ Illustration"
             className="w-80 max-w-sm"

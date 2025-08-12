@@ -20,6 +20,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Image from "next/image";
 
 const Nav: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -126,7 +127,7 @@ const Nav: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center font-bold text-2xl">
           <Link to="/">
-            <img
+            <Image
               src={logo}
               alt="Logo"
               className="w-44 md:w-48 transition duration-300"

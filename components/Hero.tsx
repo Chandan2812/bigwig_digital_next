@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import hero from "../assets/video.mp4";
+// import hero from "";
 
 const keywords = [
   "Website & Mobile App Designing",
@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover z-0"
-        src={hero}
+        src="/video.mp4"
         autoPlay
         loop
         muted
