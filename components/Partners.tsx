@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import award1 from "../assets/partner/Google-Partner-Logo-Vector.svg-.png";
 import award2 from "../assets/partner/Met-Business-Partners.png";

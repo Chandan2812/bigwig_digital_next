@@ -1,3 +1,4 @@
+"use client";
 // app/components/Location.tsx
 import { MapPin } from "lucide-react";
 

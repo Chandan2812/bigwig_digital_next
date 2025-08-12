@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -11,10 +12,10 @@ const ScrollOverlappingText: React.FC = () => {
     }
   };
 
-    // Light colors
-    const colors = ["#D1E7FF", "#E9D5FD", "#A7F3D0", "#FEF08A"];
-    // Different rotation values for tilt effect
-    const rotations = ["-5deg", "5deg", "3deg", "-3deg"];
+  // Light colors
+  const colors = ["#D1E7FF", "#E9D5FD", "#A7F3D0", "#FEF08A"];
+  // Different rotation values for tilt effect
+  const rotations = ["-5deg", "5deg", "3deg", "-3deg"];
 
   return (
     <div className="flex flex-col items-center justify-center md:min-h-screen mx-auto mt-20">
@@ -31,13 +32,15 @@ const ScrollOverlappingText: React.FC = () => {
             <span
               key={index}
               className={`absolute text-xl md:text-6xl font-semibold transition-opacity duration-700 ease-in-out ${
-                index === currentIndex ? "opacity-100 scale-100" : "opacity-0 scale-90"
+                index === currentIndex
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-90"
               }`}
               style={{
                 backgroundColor: colors[index],
-              padding: "1.5rem 2.5rem",
-              borderRadius: "999px",
-              transform: `rotate(${rotations[index]})`,
+                padding: "1.5rem 2.5rem",
+                borderRadius: "999px",
+                transform: `rotate(${rotations[index]})`,
               }}
             >
               {item}
@@ -55,8 +58,8 @@ const ScrollOverlappingText: React.FC = () => {
         </div>
       </div>
 
-       {/* Mobile View */}
-       <div className=" md:hidden flex flex-col space-y-4 items-center mb-10">
+      {/* Mobile View */}
+      <div className=" md:hidden flex flex-col space-y-4 items-center mb-10">
         {items.map((item, index) => (
           <span
             key={index}
@@ -115,4 +118,4 @@ const InViewTrigger: React.FC<InViewTriggerProps> = ({ index, onInView }) => {
   return <div ref={ref} className="h-full w-full"></div>;
 };
 
-export default ScrollOverlappingText; 
+export default ScrollOverlappingText;

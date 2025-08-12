@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -16,14 +17,38 @@ const SunflowerEffect: React.FC = () => {
   });
 
   const images = [
-    { src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66d0dc17b116bb2a191be3fa_1.webp", alt: "Profile 1" },
-    { src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66d1e09b7464f2764ded8677_5.webp", alt: "Profile 2" },
-    { src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66d0dc6178072902b3f2fc67_6.webp", alt: "Profile 3" },
-    { src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66d0dc6928e0e26b26b68c0f_7.webp", alt: "Profile 4" },
-    { src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66e1d7abb12a7bd7982a8e07_8.webp", alt: "Profile 5" },
-    { src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66d0dc4659edc558fbb8fc0b_4.webp", alt: "Profile 6" },
-    { src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66d0dc3ec9ed0645648ade63_3.webp", alt: "Profile 7" },
-    { src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66e1d79a103ea22bc93eab01_2.webp", alt: "Profile 8" },
+    {
+      src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66d0dc17b116bb2a191be3fa_1.webp",
+      alt: "Profile 1",
+    },
+    {
+      src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66d1e09b7464f2764ded8677_5.webp",
+      alt: "Profile 2",
+    },
+    {
+      src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66d0dc6178072902b3f2fc67_6.webp",
+      alt: "Profile 3",
+    },
+    {
+      src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66d0dc6928e0e26b26b68c0f_7.webp",
+      alt: "Profile 4",
+    },
+    {
+      src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66e1d7abb12a7bd7982a8e07_8.webp",
+      alt: "Profile 5",
+    },
+    {
+      src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66d0dc4659edc558fbb8fc0b_4.webp",
+      alt: "Profile 6",
+    },
+    {
+      src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66d0dc3ec9ed0645648ade63_3.webp",
+      alt: "Profile 7",
+    },
+    {
+      src: "https://cdn.prod.website-files.com/66bbc417df501b935e5152c6/66e1d79a103ea22bc93eab01_2.webp",
+      alt: "Profile 8",
+    },
   ];
 
   const totalImages = images.length;

@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import understanding from "../assets/method/understanding.png";
 import brainstroming from "../assets/method/brainstorming.png";

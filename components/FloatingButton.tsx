@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { PhoneCall, X, MessageCircle } from "lucide-react";
 

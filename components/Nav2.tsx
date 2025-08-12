@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import logo from "../assets/bigwig digital logo (11).png";
 import Image from "next/image";

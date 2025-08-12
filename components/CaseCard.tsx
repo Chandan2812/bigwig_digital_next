@@ -1,21 +1,18 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick"; // Import the react-slick component
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 const CaseCard: React.FC = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1200, // 👈 slow animation (you can adjust between 1000–1500 for even slower)
-      once: false, // 👈 animate every time it scrolls into view
-      mirror: false, // 👈 don't animate again when scrolling back up (optional)
-      easing: "ease-in-out", // 👈 smoother slow animation
+      duration: 1200,
+      once: false,
+      mirror: false,
+      easing: "ease-in-out",
     });
-
-    AOS.refresh(); // Ensures animations re-initialize correctly
+    AOS.refresh();
   }, []);
 
   const cases = [
@@ -58,34 +55,19 @@ const CaseCard: React.FC = () => {
     "Creative Innovations": "bg-gray-200",
   };
 
-  // Mobile view detection: consider width less than 768px as mobile
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
-    handleResize(); // Check on mount
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Slider settings for mobile view
-  const sliderSettings = {
-    dots: true, // Show navigation dots
-    infinite: true, // Infinite loop sliding
-    speed: 500,
-    slidesToShow: 1, // Show one at a time
-    slidesToScroll: 1,
-    arrows: false, // Optionally hide arrows on mobile
-    autoplay: true, // Automatically slide (optional)
-    autoplaySpeed: 3000, // Duration between slides
-  };
-
   return (
     <div className="px-3 w-full md:w-11/12 mb-10 py-4 mx-auto">
-      {/* Header Section */}
       <h1 className="text-5xl font-bold text-white mb-4 text-center">
         Why Bigwig?
       </h1>
@@ -95,10 +77,12 @@ const CaseCard: React.FC = () => {
       </p>
 
       {isMobile ? (
-        // Mobile view: Render slider
-        <Slider {...sliderSettings}>
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4">
           {cases.map((caseItem, index) => (
-            <div key={index} className="px-2">
+            <div
+              key={index}
+              className="flex-shrink-0 w-80 snap-center bg-transparent"
+            >
               <img
                 src={caseItem.image}
                 alt={caseItem.title}
@@ -127,9 +111,8 @@ const CaseCard: React.FC = () => {
               </div>
             </div>
           ))}
-        </Slider>
+        </div>
       ) : (
-        // Desktop/Tablet view: Render grid layout
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-4">
           {cases.map((caseItem, index) => (
             <div key={index} data-aos="zoom-in">
