@@ -8,7 +8,6 @@ import {
   FaArrowLeft,
   FaPhoneAlt,
 } from "react-icons/fa";
-import "../index.css";
 
 const ContactSidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(true);

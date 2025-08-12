@@ -1,9 +1,5 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Slider from "react-slick";
-import "../App.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const stats = [
   { value: 70, label: "Crazy\nDigital Marketers" },
@@ -18,7 +14,9 @@ const Stats: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [animatedValues, setAnimatedValues] = useState(stats.map(() => 0));
   const [inView, setInView] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0); // for mobile slider
 
+  // Detect when section is in view
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -36,6 +34,7 @@ const Stats: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Animate numbers (desktop only)
   useEffect(() => {
     if (!inView || window.innerWidth < 768) return;
 
@@ -60,16 +59,14 @@ const Stats: React.FC = () => {
     });
   }, [inView]);
 
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+  // Mobile auto-slide logic
+  useEffect(() => {
+    if (window.innerWidth >= 768) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % stats.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div
@@ -95,13 +92,16 @@ const Stats: React.FC = () => {
           ))}
         </div>
 
-        {/* Mobile View with Slick Slider */}
-        <div className="md:hidden mt-4">
-          <Slider {...sliderSettings}>
+        {/* Mobile View (custom slider) */}
+        <div className="md:hidden mt-4 overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center justify-center px-6 text-center"
+                className="min-w-full flex flex-col items-center justify-center px-6 text-center"
               >
                 <div className="bg-white/10 backdrop-blur-md shadow-md rounded-xl p-6 w-72 mx-auto text-white">
                   <h2 className="text-3xl font-bold text-[var(--primary-color)]">
@@ -113,7 +113,22 @@ const Stats: React.FC = () => {
                 </div>
               </div>
             ))}
-          </Slider>
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center mt-3 gap-2">
+            {stats.map((_, idx) => (
+              <span
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`h-2 w-2 rounded-full cursor-pointer transition-all ${
+                  idx === currentIndex
+                    ? "bg-[var(--primary-color)]"
+                    : "bg-gray-400"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
